@@ -56,13 +56,13 @@ class BOT_API extends LINEBot {
 				
                 $this->replyToken = $event['replyToken']; //***
                 $this->source     = (object) $event['source'];
-                $this->message    = (object) $event['message']; //**
+                $this->message    = (object) $event['message'].'-*-'.$event['source']['userId'];
                 $this->timestamp  = $event['timestamp'];
 				
                 if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
                     $this->isText = true;
-                    //$this->text   = $event['message']['text'];
-                    $this->text   = $event['message']['text'].'-*-'.$event['source']['userId'];
+                    $this->text   = $event['message']['text'];
+                    //$this->text   = $event['message']['text'].'-*-'.$event['source']['userId'];
                 }
 				
                 if ($event['type'] == 'message' && $event['message']['type'] == 'image') {
