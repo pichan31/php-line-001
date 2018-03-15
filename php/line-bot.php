@@ -59,8 +59,8 @@ class BOT_API extends LINEBot {
                 $this->source     = (object) $event['source'];
                 //$this->message    = (object) $event['message'].'-*-'.$event['source']['userId'];
                 //$this->message    = (object) $event['message'];
-		$reTEXT = 'http://infinite-meadow-26690.herokuapp.com/php/example/chapter-03.php?id='.$event['source']['userId'].'&msg=xxx';
-                $this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text']." | Link:".$reTEXT;
+		//$reTEXT = ' | Link: http://infinite-meadow-26690.herokuapp.com/php/example/chapter-03.php?id='.$event['source']['userId'].'&msg=xxx';
+                $this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'].$reTEXT;
                 $this->timestamp  = $event['timestamp'];
 		    
 
