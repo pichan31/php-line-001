@@ -54,12 +54,21 @@ class BOT_API extends LINEBot {
 			
             foreach ($events['events'] as $event) {
 				
-                $this->replyToken = $event['replyToken']; //***
+
+                 $this->replyToken = $event['replyToken']; //***
                 $this->source     = (object) $event['source'];
                 //$this->message    = (object) $event['message'].'-*-'.$event['source']['userId'];
                 //$this->message    = (object) $event['message'];
                 $this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'];
                 $this->timestamp  = $event['timestamp'];
+
+
+//LOG
+if(isset($event['source']['userId'])) {
+    file_put_contents('USERID_LOG/'.$event['source']['userId'].'.txt', $event['message']['text']);
+}
+
+
 				
                 if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
                     $this->isText = true;
