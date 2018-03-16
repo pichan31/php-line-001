@@ -57,19 +57,17 @@ class BOT_API extends LINEBot {
 
                  $this->replyToken = $event['replyToken']; //***
                 $this->source     = (object) $event['source'];
-                //$this->message    = (object) $event['message'].'-*-'.$event['source']['userId'];
-                //$this->message    = (object) $event['message'];
+		    
+                //$this->message    = (object) $event['message'].'-*-'.$event['source']['userId'];                
 		//$reTEXT = ' | Link: http://infinite-meadow-26690.herokuapp.com/php/example/chapter-03.php?id='.$event['source']['userId'].'&msg=xxx';
-                $this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'].$reTEXT;
+                
+		//$this->message    = (object) $event['message'];
+		$this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'].$reTEXT;
                 $this->timestamp  = $event['timestamp'];
+		saveLog(event['source']['userId'],event['message']['text'] );
 		    
 
 
-
-//LOG
-if(isset($event['source']['userId'])) {
-    file_put_contents('USERID_LOG/'.$event['source']['userId'].'.txt', $event['message']['text']);
-}
 
 
 				
@@ -94,6 +92,19 @@ if(isset($event['source']['userId'])) {
         parent::__construct($this->httpClient, [ 'channelSecret' => $channelSecret ]);
 		
     }
+	
+public function saveLog ($id = null, $msg = null) {
+    $url_log ='http://61.90.142.230/iadb/line/LOG_USERID/log_userid.php?id='.$id.'&msg='.$msg;
+    $ch_log = curl_init();
+    curl_setopt( $ch_log, CURLOPT_URL, $url_log );
+    curl_setopt( $ch_log, CURLOPT_POSTFIELDS, $data );
+    curl_setopt( $ch_log, CURLOPT_POST, true );
+    curl_setopt( $ch_log, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt( $ch_log, CURLOPT_SSL_VERIFYPEER, false );
+    $content = curl_exec( $ch_log );
+    curl_close($ch_log);
+} 
+	
 	
     public function sendMessageNew ($to = null, $message = null) {
         $messageBuilder = new TextMessageBuilder($message);
