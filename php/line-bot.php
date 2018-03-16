@@ -64,7 +64,12 @@ class BOT_API extends LINEBot {
 
 
                 //$this->message    = (object) $event['message'];
-                $this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'].$reTEXT;
+                //$this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'].$reTEXT;
+                $str_return = '';
+                $str_return .= "userId : ".$event['source']['userId']." \n TEXT : ".$event['message']['text'].$reTEXT;
+                $str_return .= "\n";
+
+                $this->message    = $str_return;
                 $this->timestamp  = $event['timestamp'];
 
 
