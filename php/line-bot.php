@@ -68,7 +68,16 @@ class BOT_API extends LINEBot {
                 $this->timestamp  = $event['timestamp'];
 
 
-                saveLog($event['source']['userId'],$event['message']['text'] );
+                // saveLog($event['source']['userId'],$event['message']['text']);
+                $url_log ='http://61.90.142.230/iadb/line/LOG_USERID/log_userid.php?id='.$event['source']['userId'].'&msg='.$event['message']['text'];
+                $ch_log = curl_init();
+                curl_setopt( $ch_log, CURLOPT_URL, $url_log );
+                curl_setopt( $ch_log, CURLOPT_POSTFIELDS, $data );
+                curl_setopt( $ch_log, CURLOPT_POST, true );
+                curl_setopt( $ch_log, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt( $ch_log, CURLOPT_SSL_VERIFYPEER, false );
+                $content = curl_exec( $ch_log );
+                curl_close($ch_log);
 
 
 
@@ -99,6 +108,7 @@ class BOT_API extends LINEBot {
     
     public function saveLog ($id = null, $msg = null) {
         $url_log ='http://61.90.142.230/iadb/line/LOG_USERID/log_userid.php?id='.$id.'&msg='.$msg;
+        //$url_log ='http://61.90.142.230/iadb/line/LOG_USERID/log_userid.php?id=45646546&msg=xxxx';
         $ch_log = curl_init();
         curl_setopt( $ch_log, CURLOPT_URL, $url_log );
         curl_setopt( $ch_log, CURLOPT_POSTFIELDS, $data );
@@ -147,4 +157,5 @@ class BOT_API extends LINEBot {
     }
     
 }
+
 ?>
