@@ -69,7 +69,8 @@ class BOT_API extends LINEBot {
                 //$reTEXT = json_encode($event['message']['text']).'-'.'ภาษาไทย';
                 $str_return = '';
                 //$str_return .= "userId : ".$event['source']['userId']." \n TEXT : ".$event['message']['text'].$reTEXT;
-                $str_return .= "TEXT : ".$event['message']['text'].'---'.json_encode($event['message']['text']).'***'.'ภาษาไทย';
+                //$str_return .= "TEXT : ".$event['message']['text'].'---'.json_encode($event['message']['text']).'***'.'ภาษาไทย';
+                $str_return .= "TEXT : ".$event['message']['text'].'---'.'ภาษาไทย';
                 //$str_return .= "\n";
 
                 $this->message    = $str_return;
