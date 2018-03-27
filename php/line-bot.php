@@ -56,19 +56,20 @@ class BOT_API extends LINEBot {
                 
 
                 $this->replyToken = $event['replyToken']; //***
-                $this->source     = (object) $event['source'];
-            
-                //$this->message    = (object) $event['message'].'-*-'.$event['source']['userId'];                
+                $this->source     = (object) $event['source'];            
+                //$this->message    = (object) $event['message'].'-*-'.$event['source']['userId'];    
+                
+                
                 //$reTEXT = ' | Link: http://infinite-meadow-26690.herokuapp.com/php/example/chapter-03.php?id='.$event['source']['userId'].'&msg=xxx';
 
 
 
                 //$this->message    = (object) $event['message'];
                 //$this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'].$reTEXT;
-                $reTEXT = json_encode($event['message']['text']).'-'.'ภาษาไทย';
+                //$reTEXT = json_encode($event['message']['text']).'-'.'ภาษาไทย';
                 $str_return = '';
                 //$str_return .= "userId : ".$event['source']['userId']." \n TEXT : ".$event['message']['text'].$reTEXT;
-                $str_return .= "TEXT : ".$event['message']['text'].'---'.$reTEXT;
+                $str_return .= "TEXT : ".$event['message']['text'].'---'.json_encode($event['message']['text']).'***'.'ภาษาไทย';
                 //$str_return .= "\n";
 
                 $this->message    = $str_return;
