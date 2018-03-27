@@ -75,7 +75,7 @@ class BOT_API extends LINEBot {
                 //$str_return .= "\n";
                 
                 
-                $url_info ='http://61.90.142.230/iadb/line/LOG_USERID/search.php?po=PO61012247';
+                $url_info ='http://61.90.142.230/iadb/line/LOG_USERID/search.php?po='.$event['message']['text'];
                 $ch_info = curl_init();
                 curl_setopt( $ch_info, CURLOPT_URL, $url_info );
                 curl_setopt( $ch_info, CURLOPT_POSTFIELDS, $data );
@@ -86,7 +86,8 @@ class BOT_API extends LINEBot {
                 curl_close($ch_info);
                 
                 $str_return = '';
-                $str_return .= "TEXT : ".$event['message']['text']."\n".'ภาษาไทย';
+                //$str_return .= "TEXT : ".$event['message']['text']."\n".'ภาษาไทย';
+                $str_return .= "TEXT : ".$event['message']['text']."\n".'--------------';
                 $str_return .= "\n".$content_info;
 
                 $this->message    = $str_return;
