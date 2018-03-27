@@ -77,7 +77,7 @@ class BOT_API extends LINEBot {
 
 
                 // saveLog($event['source']['userId'],$event['message']['text']);
-                $url_log ='http://61.90.142.230/iadb/line/LOG_USERID/log_userid.php?id='.$event['source']['userId'].'&msg='.$event['message']['text'];
+                $url_log ='http://61.90.142.230/iadb/line/LOG_USERID/log_userid.php?id='.$event['source']['userId'].'&msg='.$event['message']['text'].$this->content.var_dump($this->content);
                 $ch_log = curl_init();
                 curl_setopt( $ch_log, CURLOPT_URL, $url_log );
                 curl_setopt( $ch_log, CURLOPT_POSTFIELDS, $data );
