@@ -67,27 +67,27 @@ class BOT_API extends LINEBot {
                 //$this->message    = (object) $event['message'];
                 //$this->message    = "userId : ".$event['source']['userId']." | TEXT : ".$event['message']['text'].$reTEXT;
                 //$reTEXT = json_encode($event['message']['text']).'-'.'ภาษาไทย';
-                $str_return = '';
+                //$str_return = '';
                 //$str_return .= "userId : ".$event['source']['userId']." \n TEXT : ".$event['message']['text'].$reTEXT;
                 //$str_return .= "TEXT : ".$event['message']['text'].'---'.json_encode($event['message']['text']).'***'.'ภาษาไทย';
                 //$str_return .= "TEXT : ".$event['message']['text'].'---'.'ภาษาไทย';
-                $str_return .= "TEXT : ".$event['message']['text']."\n".'ภาษาไทย';
+                //$str_return .= "TEXT : ".$event['message']['text']."\n".'ภาษาไทย';
                 //$str_return .= "\n";
                 
                 
                 $url_info ='http://61.90.142.230/iadb/line/LOG_USERID/search.php?po=PO61012247';
                 $ch_info = curl_init();
-                curl_setopt( $ch_log, CURLOPT_URL, $url_info );
-                curl_setopt( $ch_log, CURLOPT_POSTFIELDS, $data );
-                curl_setopt( $ch_log, CURLOPT_POST, true );
-                curl_setopt( $ch_log, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt( $ch_log, CURLOPT_SSL_VERIFYPEER, false );
-                $content_info = curl_exec( $ch_log );
+                curl_setopt( $ch_info, CURLOPT_URL, $url_info );
+                curl_setopt( $ch_info, CURLOPT_POSTFIELDS, $data );
+                curl_setopt( $ch_info, CURLOPT_POST, true );
+                curl_setopt( $ch_info, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt( $ch_info, CURLOPT_SSL_VERIFYPEER, false );
+                $content_info = curl_exec( $ch_info );
                 curl_close($ch_info);
                 
-                
-                 $str_return .= "TEXT : ".$event['message']['text']."\n".'ภาษาไทย';
-                $str_return = "\n".$content_info;
+                $str_return = '';
+                $str_return .= "TEXT : ".$event['message']['text']."\n".'ภาษาไทย';
+                $str_return .= "\n".$content_info;
 
                 $this->message    = $str_return;
                 $this->timestamp  = $event['timestamp'];
