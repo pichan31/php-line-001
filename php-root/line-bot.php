@@ -87,8 +87,9 @@ class BOT_API extends LINEBot {
                 
                 $str_return = '';
                 //$str_return .= "TEXT : ".$event['message']['text']."\n".'ภาษาไทย';
-                $str_return .= "TEXT : ".$event['message']['text']."\n".'--------------';
-                $str_return .= "\n".$content_info;
+                //$str_return .= "TEXT : ".$event['message']['text']."\n".'--------------';
+                //$str_return .= "\n".$content_info;
+                $str_return .= $content_info;
 
                 $this->message    = $str_return;
                 $this->timestamp  = $event['timestamp'];
