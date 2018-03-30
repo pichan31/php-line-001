@@ -3,7 +3,8 @@ echo "push.php?id=xxxxxxxxxxxxx&msg=xxxxxxxx"."<hr>";
 print_r($_GET);
 
 
-//include ('line-bot-api/php/line-bot.php');
+
+include ('../config.php');
 include ('../line-bot.php');
 
 // // AAA info
